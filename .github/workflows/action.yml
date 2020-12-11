@@ -1,0 +1,38 @@
+name: 'Generate SARIF from Fortify on Demand'
+description: 'Generate SARIF file from Fortify on Demand SAST results for import to GitHub'
+author: 'Fortify'
+inputs:
+  base-url:
+    description: 'FoD Base URL (e.g. https://ams.fortify.com)'
+    required: true
+  user:
+    description: 'FoD User Name'
+    required: false
+  password:
+    description: 'FoD Password or Access Token'
+    required: false
+  tenant:
+    description: 'FoD Tenant'
+    required: false
+  client-id:
+    description: 'FoD Client Id'
+    required: false
+  client-secret:
+    description: 'FoD Client Secret'
+    required: false
+  release-id:
+    description: 'FoD Release ID from which to download SAST vulnerabilities'
+    required: true
+  output:
+    description: 'Name and location of generated SARIF file'
+    required: true
+    default: './output.sarif'
+outputs:
+  sarif:
+    description: 'Full path to the generated SARIF file'
+runs:
+  using: 'node12'
+  main: 'dist/index.js'
+branding:
+  icon: 'shield'
+  color: 'blue'
